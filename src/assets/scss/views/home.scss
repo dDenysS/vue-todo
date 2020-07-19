@@ -1,0 +1,14 @@
+.head {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.note-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -2%;
+}

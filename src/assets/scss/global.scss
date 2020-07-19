@@ -1,0 +1,42 @@
+@import "variables";
+@import "~normalize.css/normalize";
+@import "common/checkbox";
+@import "common/input";
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background-color: #111;
+    color: $white;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none
+}
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+
+    padding: 10px;
+}

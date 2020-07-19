@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="head">
+      <h2>Список заметок</h2>
+      <v-button :icon="icons.EditIcon" text="Создать заметку"/>
+    </div>
+    <div class="note-list">
+      <mini-note/>
+      <mini-note/>
+      <mini-note/>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import MiniNote from '@/components/MiniNote'
+import Button from '@/components/common/Button'
+
+import EditIcon from '@/assets/images/plus-icon.svg'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    MiniNote,
+    VButton: Button
   },
-};
+  data: () => ({
+    icons: {
+      EditIcon
+    }
+  })
+}
 </script>
+
+<style scoped lang="scss">
+  @import "../assets/scss/views/home";
+</style>

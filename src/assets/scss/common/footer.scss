@@ -1,0 +1,14 @@
+.footer {
+    box-shadow: 0 -1px 10px 0 rgb(71, 71, 71);
+    background-color: #272727;
+    margin-top: auto;
+}
+
+.footer__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__paragraph {
+    max-width: 300px;
+}

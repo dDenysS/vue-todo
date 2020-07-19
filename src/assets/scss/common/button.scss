@@ -1,0 +1,47 @@
+@import "../variables";
+@import "../mixins";
+
+.button {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #212121;
+    color: #b0b1aa;
+    margin: 5px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    line-height: 1;
+    outline: none;
+    border: 1px solid transparent;
+
+    &:hover {
+        cursor: pointer;
+        @include box-shadow();
+    }
+
+    &:focus {
+        border-color: $white;
+    }
+
+    &:active {
+        opacity: .8;
+    }
+
+    &:disabled {
+        opacity: .8;
+        box-shadow: none;
+        background-color: #ccc;
+    }
+}
+
+.button__icon {
+    width: 20px;
+    margin:0 2.5px;
+    height: auto;
+}
+
+.button__text {
+    margin:0 2.5px;
+    padding-top: 3px;
+}

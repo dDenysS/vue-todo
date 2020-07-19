@@ -1,0 +1,25 @@
+@import "../variables";
+@import "../mixins";
+
+.mini-note {
+    display: flex;
+    flex-direction: column;
+    max-width: 46%;
+    width: 100%;
+    margin-bottom: 4%;
+    margin-right: 2%;
+    margin-left: 2%;
+    padding: 15px 10px;
+    background-color: $black;
+    @include box-shadow()
+}
+
+.mini-note__title {
+    margin: 0;
+}
+
+.mini-note__actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}

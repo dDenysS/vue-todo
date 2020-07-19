@@ -1,0 +1,30 @@
+@import "../variables";
+@import "../mixins";
+
+.note {
+    margin-top: 40px;
+}
+
+.note__wrapper {
+    background-color: $black;
+    @include box-shadow()
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.note__actions {
+    display: flex;
+    align-items: center;
+}
+
+.note__action--add-task {
+    margin-right: auto;
+}
+
+.note__action--mini {
+    font-size: 14px;
+}

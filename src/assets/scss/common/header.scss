@@ -1,0 +1,33 @@
+@import "../variables";
+@import "../mixins";
+
+.header {
+    @include box-shadow(0, 1px);
+    background-color: $black;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+        border-color: $white;
+    }
+
+    &:active {
+        opacity: .7;
+    }
+}
+
+.logo__icon {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.logo__name {
+    font-weight: bold;
+    color: $white;
+    font-size: 40px;
+}
