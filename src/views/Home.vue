@@ -2,12 +2,10 @@
   <div class="container">
     <div class="head">
       <h2>Список заметок</h2>
-      <v-button :icon="icons.EditIcon" text="Создать заметку"/>
+      <v-button :to="{ name: 'NoteCreate' }" :icon="icons.EditIcon" text="Создать заметку"/>
     </div>
     <div class="note-list">
-      <mini-note/>
-      <mini-note/>
-      <mini-note/>
+      <mini-note v-for="note in notes" :note="note" :key="note.id"/>
     </div>
   </div>
 </template>
@@ -28,7 +26,12 @@ export default {
     icons: {
       EditIcon
     }
-  })
+  }),
+  computed: {
+    notes() {
+      return this.$store.state.notes
+    }
+  }
 }
 </script>
 

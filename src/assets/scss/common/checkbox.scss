@@ -8,6 +8,7 @@
     display: block;
     position: relative;
     width: 23px;
+    min-width: 23px;
     height: 20px;
     font: 14px/20px "Open Sans", Arial, sans-serif;
     color: #ddd;
@@ -15,6 +16,10 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+.custom-checkbox:disabled + label {
+    cursor: unset;
 }
 
 .custom-checkbox + label:last-child {

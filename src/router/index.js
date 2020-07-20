@@ -16,13 +16,23 @@ const routes = [
     redirect: { name: 'Home' }
   },
   {
+    path: '/notes/create',
+    name: 'NoteCreate',
+    component: () => import('../views/Note')
+  },
+  {
     path: '/notes/:id',
     name: 'Note',
     component: () => import('../views/Note')
   },
   {
-    path: '*',
+    path: '/404',
+    name: 'NotFound',
     component: () => import('../views/NotFound')
+  },
+  {
+    path: '*',
+    redirect: { name: 'NotFound' }
   }
 ]
 

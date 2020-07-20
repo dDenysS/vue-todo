@@ -11,6 +11,8 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
+    'func-names': ['error', 'never'],
+    'arrow-parens': ['error', 'as-needed'],
     semi: ['error', 'never'],
     'import/extensions': [2, 'never'],
     'comma-dangle': ['error', 'never'],
