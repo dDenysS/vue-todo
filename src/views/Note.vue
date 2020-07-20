@@ -1,7 +1,7 @@
 <template>
   <div class="note">
     <div class="container note__wrapper">
-      <h2>Создание заметки</h2>
+      <h2>{{ isCreateMode ? 'Создание': 'Редактирование'}} заметки</h2>
       <hr>
       <form>
         <label class="custom-input">
@@ -26,6 +26,8 @@
           <v-button class="note__action note__action--add-task"
                     :icon="icons.PlusIcon"
                     :handler-click="handleAddTask" text="Добавить задачу"/>
+        </div>
+        <div class="note__actions">
           <v-button class="note__action note__action--mini"
                     :handler-click="()=> handleHistoryChange(true)"
                     :disabled="activeHistoryIndex === 0"
@@ -34,13 +36,23 @@
                     :disabled="activeHistoryIndex + 1 === historyChange.length"
                     :handler-click="() => handleHistoryChange(false)"
                     text="Повторить отмененное изменение" :icon="icons.RedoIcon"/>
+        </div>
+        <div class="note__actions">
           <v-button :handler-click="handleDeleteNote"
                     text="Удалить" :icon="icons.TrashIcon"/>
+          <v-button :handler-click="handleEditCancelNote"
+                    :text="`Отменить ${isCreateMode ? 'создание': 'редактирование'}`"
+                    :icon="icons.CancelIcon"/>
           <v-button :handler-click="saveNote" text="Сохранить" :icon="icons.SaveIcon"/>
         </div>
       </form>
     </div>
-    <confirm-remove-modal :is-open="isOpenConfirmModal" :handler-click="handleConfirmRemove"/>
+    <confirm-remove-modal text="Вы уверены что хотите удалить?"
+                          :is-open="isOpenConfirmModal" :handler-click="handleConfirmRemove"/>
+    <confirm-remove-modal :text="`Вы уверены что хотите отменить
+                                  ${isCreateMode ? 'создание': 'редактирование'} заметки?`"
+                          :is-open="isOpenEditCancelModal"
+                          :handler-click="handleConfirmEditCancel"/>
   </div>
 </template>
 
@@ -49,7 +61,7 @@ import { v4 as uuidv4 } from 'uuid'
 import debounce from 'debounce'
 
 import Button from '@/components/common/Button'
-import ConfirmRemoveModal from '@/components/modals/ComfirmRemoveModal'
+import ConfirmRemoveModal from '@/components/modals/ConfirmModal'
 
 import types from '@/store/types'
 
@@ -58,6 +70,7 @@ import RedoIcon from '@/assets/images/redo-icon.svg'
 import UndoIcon from '@/assets/images/undo-icon.svg'
 import PlusIcon from '@/assets/images/plus-icon.svg'
 import SaveIcon from '@/assets/images/save-icon.svg'
+import CancelIcon from '@/assets/images/cancel-icon.svg'
 
 export default {
   name: 'Note',
@@ -67,6 +80,7 @@ export default {
   },
   data: () => ({
     isOpenConfirmModal: false,
+    isOpenEditCancelModal: false,
 
     historyChange: [],
     activeHistoryIndex: -1,
@@ -78,7 +92,8 @@ export default {
       UndoIcon,
       RedoIcon,
       PlusIcon,
-      SaveIcon
+      SaveIcon,
+      CancelIcon
     }
   }),
   computed: {
@@ -167,8 +182,18 @@ export default {
 
       this.$router.push({ name: 'Home' })
     },
+    handleConfirmEditCancel(isConfirm) {
+      this.isOpenEditCancelModal = false
+
+      if (!isConfirm) return
+
+      this.$router.push({ name: 'Home' })
+    },
     handleDeleteNote() {
       this.isOpenConfirmModal = true
+    },
+    handleEditCancelNote() {
+      this.isOpenEditCancelModal = true
     },
     saveNote() {
       const type = this.isCreateMode ? types.ADD_NOTE : types.EDIT_NOTE

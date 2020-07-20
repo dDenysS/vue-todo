@@ -1,10 +1,16 @@
+@import "../mixins";
+
 .head {
     display: flex;
     align-content: center;
     justify-content: space-between;
-
+    flex-direction: column;
     margin-top: 20px;
     margin-bottom: 30px;
+
+    @include media-tablet {
+        flex-direction: row;
+    }
 }
 
 .note-list {

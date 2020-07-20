@@ -20,6 +20,12 @@
     margin-top: 30px;
     display: flex;
     align-items: center;
+
+    flex-wrap: wrap;
+
+    @include media-tablet {
+        justify-content: flex-end;
+    }
 }
 
 .note__action--add-task {

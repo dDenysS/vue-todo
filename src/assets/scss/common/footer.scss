@@ -1,12 +1,20 @@
+@import "../mixins";
+
 .footer {
     box-shadow: 0 -1px 10px 0 rgb(71, 71, 71);
     background-color: #272727;
-    margin-top: auto;
+    margin-top: 40px;
 }
 
 .footer__wrapper {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    @include media-tablet {
+        flex-direction: row;
+    }
 }
 
 .footer__paragraph {

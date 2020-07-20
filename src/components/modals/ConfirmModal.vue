@@ -1,7 +1,7 @@
 <template>
   <modal v-if="isOpen" :overlay-click="() => handlerClick(false)">
     <div class="confirm-modal">
-      <h3 class="confirm-modal__title">Вы уверены что хотите удалить?</h3>
+      <h3 class="confirm-modal__title">{{ text }}</h3>
       <div class="confirm-modal__actions">
         <v-button :handler-click="() => handlerClick(false)" text="Нет"/>
         <v-button :handler-click="() => handlerClick(true)" text="Да"/>
@@ -15,8 +15,12 @@ import Modal from '@/components/common/Modal'
 import Button from '@/components/common/Button'
 
 export default {
-  name: 'ConfirmRemoveModal',
+  name: 'ConfirmModal',
   props: {
+    text: {
+      type: String,
+      required: true
+    },
     isOpen: {
       type: Boolean,
       required: true
@@ -34,5 +38,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../../assets/scss/modals/comfirm-remove";
+  @import "../../assets/scss/modals/comfirm";
 </style>

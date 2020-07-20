@@ -4,14 +4,17 @@
 .mini-note {
     display: flex;
     flex-direction: column;
-    max-width: 46%;
     width: 100%;
     margin-bottom: 4%;
     margin-right: 2%;
     margin-left: 2%;
     padding: 15px 10px;
     background-color: $black;
-    @include box-shadow()
+    @include box-shadow();
+
+    @include media-tablet {
+        max-width: 46%;
+    }
 }
 
 .mini-note__title {

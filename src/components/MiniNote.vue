@@ -15,7 +15,8 @@
       <v-button :to="{name:'Note', params: {id: note.id} }" text="Изменить" :icon="icons.EditIcon"/>
       <v-button :handler-click="handleRemove" text="Удалить" :icon="icons.TrashIcon"/>
     </div>
-    <confirm-remove-modal :handler-click="handleConfirmRemove" :is-open="isOpen"/>
+    <confirm-remove-modal text="Вы уверены что хотите удалить?"
+                          :handler-click="handleConfirmRemove" :is-open="isOpen"/>
   </div>
 </template>
 
@@ -26,7 +27,7 @@ import types from '@/store/types'
 
 import TrashIcon from '@/assets/images/trash-icon.svg'
 import EditIcon from '@/assets/images/edit-icon.svg'
-import ConfirmRemoveModal from '@/components/modals/ComfirmRemoveModal'
+import ConfirmRemoveModal from '@/components/modals/ConfirmModal'
 
 export default {
   name: 'MiniNote',
